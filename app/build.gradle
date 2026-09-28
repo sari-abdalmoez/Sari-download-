@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.sari.downloader'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.sari.downloader'
+
+        minSdk 24
+        targetSdk 36
+
+        versionCode 1
+        versionName '1.0'
+
+        ndkVersion '30.0.16248370'
+
+        externalNativeBuild {
+            cmake {
+                cppFlags '-std=c++17'
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            minifyEnabled false
+            shrinkResources false
+            debuggable false
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+}
